@@ -1,0 +1,26 @@
+<h1>Simple Photo CMS in Rails 4</h1>
+<h2>Listing photos</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Filename</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @images.each do |image| %>
+      <tr>
+        <td><img src =" <%= images_path + '/' + image.id.to_s %> "></td>
+        <td><%= button_to 'Download', image, method: :get %></td>
+        <td><%= button_to 'Destroy', image, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Image', new_image_path %>

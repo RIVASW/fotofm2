@@ -1,0 +1,15 @@
+%h1 Simple Photo CMS in Rails 4
+%h2 Listing photos
+%table
+  %thead
+    %tr
+      %th Filename
+      %th
+      %th
+  %tbody
+    - @images.each do |image|
+      %tr
+        %td= image_tag image_path(image)
+        %td= button_to 'Destroy', image, method: :delete, data: { confirm: 'Are you sure?' }
+%br
+= link_to 'New Image', new_image_path

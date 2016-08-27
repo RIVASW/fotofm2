@@ -1,0 +1,9 @@
+= form_for [:admin, @section] do |f|
+	.form-group
+		%label{:for => "name"} Section name:
+		= f.text_field :name, class: 'form-control', type: 'text'
+	.form-group
+		%label{:for => "title"} Section title:
+		= f.text_field :title, class: 'form-control', type: 'text'
+	= f.submit class: 'btn btns-default'
+    

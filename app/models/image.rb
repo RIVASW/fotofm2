@@ -1,6 +1,6 @@
 class Image < ActiveRecord::Base
 	validates :filename, :mime_type, :file_contents, :gallery_id, presence: true
-	belongs_to :gllerey
+	belongs_to :gallerey
 	
 	def initialize(params = {})
 	  	@file = params.delete(:file)

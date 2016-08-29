@@ -1,0 +1,15 @@
+= form_for [:admin, @section, @gallery] do |f|
+	.form-group
+		%label{:for => "name"} Galery name:
+		= f.text_field :name, class: 'form-control', type: 'text'
+	.form-group
+		%label{:for => "title"} Gallery title:
+		= f.text_field :title, class: 'form-control', type: 'text'
+	.form-group
+		%label{:for => "thumbnail"} Gallery thumbnail:
+		= f.file_field :thumbnail
+	.form-group
+		%label{:for => "date"} Photoset date:
+		= f.date_field :date, class: 'form-control'
+
+	= f.submit class: 'btn btns-default'

@@ -1,4 +1,6 @@
 class Admin::SectionsController < AdminController
+	before_action :set_section, only: [:show, :edit, :update, :destroy]
+
 	def index
 		@sections = Section.all
 	end
@@ -17,17 +19,34 @@ class Admin::SectionsController < AdminController
 			end
 		end
 	end
+
+	def update
+		respond_to do |format|
+			if@section.update(section_params)
+				format.html{ redirect_to admin_sections_path, notice: 'image was successfully updated.' }
+			else
+				format.html{ render action: 'edit' }
+			end
+		end
+	end
+
 	def destroy
-		@section = Section.find(params[:id])
-	    @section.destroy
-	    respond_to do |format|
-	      format.html { redirect_to admin_sections_path }
+    @section.destroy
+    respond_to do |format|
+      format.html { redirect_to admin_sections_path }
     end
   end
 
+  def edit
+  end
+
 private
-	
+
+	def set_section
+		@section = Section.find(params[:id])  
+	end
+
 	def section_params
-		params.require(:section).permit(:name, :title)
-	end	
+			params.require(:section).permit(:name, :title)
+	end 	
 end

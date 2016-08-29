@@ -5,12 +5,14 @@
       %tr
         %th Name
         %th Title
-        %th 
+        %th
+        %th
     %tbody
       - @sections.each do |section| 
         %tr
           %td= section.name
           %td= section.title
-          %td= button_to 'Delete', admin_section_path(section.id), method: :delete, data: { confirm: 'Are you sure?' }
+          %td= button_to 'Delete', admin_section_path(section), method: :delete, data: { confirm: 'Are you sure?' }
+          %td= button_to 'Edit', edit_admin_section_path(section), method: :get
 %br
 = link_to 'New section', new_admin_section_path

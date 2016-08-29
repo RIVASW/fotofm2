@@ -6,4 +6,5 @@
 		%label{:for => "title"} Section title:
 		= f.text_field :title, class: 'form-control', type: 'text'
 	= f.submit class: 'btn btns-default'
-
+%br
+= link_to 'New gallery', new_admin_section_gallery_path(@section)

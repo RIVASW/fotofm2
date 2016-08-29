@@ -1,0 +1,7 @@
+.col-md-4
+	.thumbnail    
+		%img{:alt => "", :src => thumbnail_section_gallery_path(id: gallery.id, section_id: gallery.section_id)}
+		.caption
+			%h5.pull-right.text-muted= gallery.date.to_date
+			%h4= gallery.title
+			= link_to 'Edit', edit_admin_section_gallery_path(id: gallery.id, section_id: gallery.section_id)

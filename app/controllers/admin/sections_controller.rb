@@ -38,6 +38,7 @@ class Admin::SectionsController < AdminController
   end
 
   def edit
+  	@galleries = Gallery.where("section_id = ?", @section.id)  		
   end
 
 private

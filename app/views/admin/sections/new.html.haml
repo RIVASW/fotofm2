@@ -1,4 +1,5 @@
 = form_for [:admin, @section] do |f|
+	= render 'shared/error_messages', object: f.object
 	.form-group
 		%label{:for => "name"} Section name:
 		= f.text_field :name, class: 'form-control', type: 'text'

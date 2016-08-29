@@ -1,4 +1,5 @@
 class Admin::GalleriesController < AdminController
+	before_action :set_gallery, only: [:show, :edit, :update, :destroy, :thumbnail]
 
 	def index
 		@galleries = Gallery.all
@@ -6,8 +7,7 @@ class Admin::GalleriesController < AdminController
 
 	def new
 		@section = Section.find(params[:section_id])
-		@gallery = @section.galleries.build
-		
+		@gallery = @section.galleries.build		
 	end
 
 	def create
@@ -23,16 +23,23 @@ class Admin::GalleriesController < AdminController
 	end
 
 	def destroy
-		@gallery = Gallery.find(params[:id])
-	    @gallery.destroy
-	    respond_to do |format|
-	      format.html { redirect_to admin_gallerys_path }
-    	end
-  	end
+			@gallery.destroy
+			respond_to do |format|
+				format.html { redirect_to admin_gallerys_path }
+			end
+		end
+
+	def thumbnail
+		send_data @gallery.thumbnail
+	end  	
 
 private
 
+	def set_gallery
+		@gallery = Gallery.find(params[:id])
+	end
+
 	def gallery_params
-			params.require(:gallery).permit(:name, :title, :thumbnail, :date)
+		params.require(:gallery).permit(:name, :title, :thumbnail, :date)
 	end 	
 end

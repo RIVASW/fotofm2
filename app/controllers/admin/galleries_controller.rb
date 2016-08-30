@@ -15,6 +15,10 @@ class Admin::GalleriesController < AdminController
 		@gallery = @section.galleries.build(gallery_params)
 		respond_to do |format|
 			if@gallery.save
+				params[:gallery][:images].each do |image_params| 
+					@image = @gallery.images.build(file: image_params)
+					@image.save
+				end
 				format.html{ redirect_to edit_admin_section_path(@section.id), notice: 'gallery was successfully created.' }
 			else
 				format.html{ render action: 'new' }
@@ -23,9 +27,10 @@ class Admin::GalleriesController < AdminController
 	end
 
 	def destroy
+			@section_id = @gallery.section_id
 			@gallery.destroy
 			respond_to do |format|
-				format.html { redirect_to admin_gallerys_path }
+				format.html { redirect_to edit_admin_section_path(@section_id) }
 			end
 		end
 

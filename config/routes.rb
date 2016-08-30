@@ -6,12 +6,12 @@ Fotofm2::Application.routes.draw do
     end
     
     resources :sections, only: [:show] do
-      resources :galleries do
+      resources :galleries, only: [:show, :thumbnail] do
         get :thumbnail, on: :member       
       end
     end
 
-    resources :images
+    resources :images, only: [:show]
 
     root to: redirect('/images')  
 

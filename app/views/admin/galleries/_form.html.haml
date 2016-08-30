@@ -12,4 +12,7 @@
 	.form-group
 		%label{:for => "date"} Photoset date:
 		= f.date_field :date, class: 'form-control'
+	.form-group
+		%label{:for => "Photos"} Upload gallery photos:
+		= f.file_field :images, multiple: true, name: 'gallery[images][]'
 	= f.submit class: 'btn btns-default'

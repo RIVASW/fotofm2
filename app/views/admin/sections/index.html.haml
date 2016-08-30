@@ -12,7 +12,8 @@
         %tr
           %td= section.name
           %td= section.title
-          %td= button_to 'Delete', admin_section_path(section), method: :delete, data: { confirm: 'Are you sure?' }
-          %td= button_to 'Edit', edit_admin_section_path(section), method: :get
+          %td= link_to 'Edit', edit_admin_section_path(section)
+          %td= button_to 'Delete', admin_section_path(section), class: 'btn btn-danger', method: :delete, data: { confirm: 'Are you sure?' }
+
 %br
 = link_to 'New section', new_admin_section_path

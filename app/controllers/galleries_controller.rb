@@ -7,10 +7,13 @@ class GalleriesController < ApplicationController
 
 	def thumbnail
 		send_data @gallery.thumbnail
+	end
+
+	def show
+		@images = Image.where("gallery_id = ?", @gallery.id)
 	end  	
 
 private
-
 	def set_gallery
 		@gallery = Gallery.find(params[:id])
 	end
